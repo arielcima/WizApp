@@ -1,14 +1,13 @@
-import React from 'react';
 import {
-  TouchableOpacity,
-  View,
-  Text,
   StyleSheet,
   Switch,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { kelvinToHex, rgbToHex } from '../utils/colorUtils';
 
-export default function BulbCard({ bulb, onToggle, onPress }) {
+export default function BulbCard({ bulb, onToggle, onPress, onLongPress }) {
   const lightColor =
     bulb.mode === 'color'
       ? rgbToHex(bulb.r, bulb.g, bulb.b)
@@ -22,6 +21,8 @@ export default function BulbCard({ bulb, onToggle, onPress }) {
     <TouchableOpacity
       style={[styles.card, !bulb.isOn && styles.cardOff]}
       onPress={onPress}
+      onLongPress={onLongPress}
+      delayLongPress={500}
       activeOpacity={0.75}
     >
       {/* Glow effect when on */}

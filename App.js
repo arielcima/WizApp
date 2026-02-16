@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
 
 import BulbControlScreen from './src/screens/BulbControlScreen';
+import GroupControlScreen from './src/screens/GroupControlScreen';
 import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
@@ -29,6 +30,13 @@ function App() {
           component={BulbControlScreen}
           options={({ route }) => ({
             title: route.params?.bulb?.name ?? 'Bulb Control',
+          })}
+        />
+        <Stack.Screen
+          name="GroupControl"
+          component={GroupControlScreen}
+          options={({ route }) => ({
+            title: route.params?.group?.name ?? 'Group Control',
           })}
         />
       </Stack.Navigator>
