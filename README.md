@@ -9,6 +9,3 @@ This could be installed in a old spare phone to use as a remote control... maybe
 # Compatibility
 I only managed to test it in an old Motorola EDGE.
 
-# Next Steps
-- Add groups to control entire rooms.
-- Make an iOS version. (If possible, don't know if Tim Apple will let me)
