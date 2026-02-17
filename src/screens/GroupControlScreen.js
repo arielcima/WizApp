@@ -1,18 +1,18 @@
 import Slider from '@react-native-community/slider';
 import { useCallback, useState } from 'react';
 import {
-    Alert,
-    Modal,
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Switch,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  Modal,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Switch,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ColorWheel from '../components/ColorWheel';
 import WizService, { WIZ_SCENES } from '../services/WizService';
 import { TEMP_MAX, TEMP_MIN, kelvinToHex, rgbToHex, tempToLabel } from '../utils/colorUtils';
@@ -114,7 +114,7 @@ export default function GroupControlScreen({ route, navigation }) {
         <Text style={styles.colorRgb}>R {color.r} · G {color.g} · B {color.b}</Text>
       </View>
       <View style={styles.swatchRow}>
-        {[[255,60,60],[255,140,0],[255,220,0],[60,200,80],[60,140,255],[140,60,255],[255,60,180],[255,255,255]].map(([r, g, b]) => (
+        {[[255, 60, 60], [255, 140, 0], [255, 220, 0], [60, 200, 80], [60, 140, 255], [140, 60, 255], [255, 60, 180], [255, 255, 255]].map(([r, g, b]) => (
           <TouchableOpacity
             key={`${r}-${g}-${b}`}
             style={[styles.swatch, { backgroundColor: rgbToHex(r, g, b) }, color.r === r && color.g === g && color.b === b && styles.swatchSelected]}
@@ -259,7 +259,7 @@ export default function GroupControlScreen({ route, navigation }) {
                 onPress={async () => {
                   const trimmed = renameText.trim();
                   if (!trimmed) return;
-                  try { await onRenameGroup(group.id, trimmed); } catch {}
+                  try { await onRenameGroup(group.id, trimmed); } catch { }
                   setRenameVisible(false);
                 }}
               >

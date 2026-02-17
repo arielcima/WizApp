@@ -4,13 +4,14 @@ import {
   FlatList,
   Modal,
   RefreshControl,
-  SafeAreaView, StatusBar,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import BulbCard from '../components/BulbCard';
 import GroupCard from '../components/GroupCard';
 import { useGroups } from '../hooks/useGroups';

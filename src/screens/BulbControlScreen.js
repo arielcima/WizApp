@@ -2,7 +2,6 @@ import Slider from '@react-native-community/slider';
 import { useCallback, useEffect, useState } from 'react';
 import {
   Modal,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -12,6 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ColorWheel from '../components/ColorWheel';
 import { useBulbControl } from '../hooks/useWiz';
 import { saveBulbName } from '../services/StorageService';
@@ -116,11 +116,11 @@ export default function BulbControlScreen({ route, navigation }) {
         <Text style={styles.colorRgb}>R {localBulb.r} · G {localBulb.g} · B {localBulb.b}</Text>
       </View>
       <View style={styles.swatchRow}>
-        {[[255,60,60],[255,140,0],[255,220,0],[60,200,80],[60,140,255],[140,60,255],[255,60,180],[255,255,255]].map(([r, g, b]) => (
+        {[[255, 60, 60], [255, 140, 0], [255, 220, 0], [60, 200, 80], [60, 140, 255], [140, 60, 255], [255, 60, 180], [255, 255, 255]].map(([r, g, b]) => (
           <TouchableOpacity
             key={`${r}-${g}-${b}`}
             style={[styles.swatch, { backgroundColor: rgbToHex(r, g, b) },
-              localBulb.r === r && localBulb.g === g && localBulb.b === b && styles.swatchSelected]}
+            localBulb.r === r && localBulb.g === g && localBulb.b === b && styles.swatchSelected]}
             onPress={() => { syncUpdate({ r, g, b, mode: 'color' }); setColor(r, g, b); }}
           />
         ))}
